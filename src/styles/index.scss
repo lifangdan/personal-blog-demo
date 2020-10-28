@@ -1,0 +1,241 @@
+@import './variables.scss';
+@import './mixin.scss';
+
+body {
+  height: 100%;
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.fontW {
+  font-weight: bold
+}
+
+.border {
+  border: 1px solid #dfe6ec;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.green-color {
+  color: $greenColor;
+}
+
+.blue-color {
+  color: $blueColor;
+}
+
+.yellow-color {
+  color: $yellowColor;
+}
+
+.red-color {
+  color: $redColor;
+}
+
+.white-bg {
+  background-color: #ffffff;
+}
+
+.green-bg {
+  background-color: $greenColor;
+}
+
+.blue-bg {
+  background-color: $blueColor;
+}
+
+.yellow-bg {
+  background-color: $yellowColor;
+}
+
+.red-bg {
+  background-color: $redColor;
+}
+
+.cyan-bg {
+  background-color: #74D4C0;
+}
+
+.orange-bg {
+  background-color: #FF9A76;
+}
+
+.purple-bg {
+  background-color: #AA96DA;
+}
+
+//表格奇数行背景颜色
+.el-table tr:nth-child(even) {
+  background-color: #F8F8F8;
+}
+
+.el-table th.is-leaf, .el-table td {
+  border-bottom: none !important;
+}
+
+.el-table th {
+  background-color: rgba(30, 159, 255, 0.1) !important;
+}
+
+
+//超过两行省略
+.overOneLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.overTwoLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.overThreeLine {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/*弹性布局*/
+.flex_box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  //align-items:center; /*上下居中*/
+}
+
+.it1_box {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+}
+
+.it2_box {
+  -webkit-box-flex: 2;
+  -moz-box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  display: block;
+}
+
+.it3_box {
+  -webkit-box-flex: 3;
+  -moz-box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  display: block;
+}
+
+.it4_box {
+  -webkit-box-flex: 4;
+  -moz-box-flex: 4;
+  -webkit-flex: 4;
+  -ms-flex: 4;
+  flex: 4;
+  display: block;
+}
+
+.it5_box {
+  -webkit-box-flex: 5;
+  -moz-box-flex: 5;
+  -webkit-flex: 5;
+  -ms-flex: 5;
+  flex: 5;
+  display: block;
+}
+
+.it6_box {
+  -webkit-box-flex: 6;
+  -moz-box-flex: 6;
+  -webkit-flex: 6;
+  -ms-flex: 6;
+  flex: 6;
+  display: block;
+}

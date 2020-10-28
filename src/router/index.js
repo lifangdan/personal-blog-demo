@@ -1,41 +1,63 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import _import from './_import'
-import Home from '../views/Home.vue'
-import pageA from '../views/pageA'
+import Layout from '../views/layout/Layout'
+import LayoutTwo from '../views/layout/LayoutTwo'
+import Home from '../views/home/home'
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: () => import('@/views/home/index')
-        // component: () => _import('home/index')
-    },
-    {
-        path: '/pageA',
-        redirect: '/pageA'//重定向根目录指向pageA
-    },
-    {
-        path: '/pageA/:id',
-        name: 'pageA',
-        // props:true,//设置props属性，获取路由的变量和普通的属性传递没区别
-        component: pageA
-    },
-    {
-        path: '/Home',
         name: 'Home',
         component: Home
     },
     {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')//该引用方法为异步组件加载方法。按需加载
-    }
+        path: '/Index',
+        component: Layout,
+        children: [
+            {
+                path: '/Index',
+                name: 'Index',
+                component: () => import('@/views/home/index'),//该引用方法为异步组件加载方法。按需加载
+                meta: {
+                    isShowSideBar: false,//是否展示菜单栏
+                    isHeader: true,//是否头部菜单
+                    title:'我的工作台',
+                }
+            },
+        ]
+    },
+    {
+        path: '/PersonCenter',
+        component: Layout,
+        children: [
+            {
+                path: '/PersonCenter',
+                name: 'PersonCenter',
+                component: () => import('@/views/personcenter/index'),
+                meta: {
+                    isShowSideBar: true,
+                    isHeader: true,
+                    title:'个人中心',
+                }
+            },
+        ]
+    },
+    {
+        path: 'typeScript',
+        component: LayoutTwo,
+        redirect: 'noredirect',
+        children: [
+            {
+                path: '/typeScript/page1',
+                name: 'page1',
+                component: () => import('@/views/typeScript/page1'),
+            },
+        ]
+    },
+
 ]
 
 const router = new VueRouter({

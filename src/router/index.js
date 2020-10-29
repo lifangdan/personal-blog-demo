@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import _import from './_import'
 import Layout from '../views/layout/Layout'
-import LayoutTwo from '../views/layout/LayoutTwo'
 import Home from '../views/home/home'
+
+import TypeScript from './modules/typeScript'
 
 Vue.use(VueRouter)
 
@@ -45,23 +45,12 @@ const routes = [
             },
         ]
     },
-    {
-        path: 'typeScript',
-        component: LayoutTwo,
-        redirect: 'noredirect',
-        children: [
-            {
-                path: '/typeScript/page1',
-                name: 'page1',
-                component: () => import('@/views/typeScript/page1'),
-            },
-        ]
-    },
+    ...TypeScript
 
 ]
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     base: process.env.BASE_URL,
     routes
 })

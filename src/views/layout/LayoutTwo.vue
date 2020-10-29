@@ -18,7 +18,6 @@
     import Header from './components/header'
     import SideBarMenu from './components/sideBarMenu'
     import Main from './components/main'
-
     export default {
         components: {
             Header,
@@ -32,6 +31,7 @@
         created(){
 
         },
+
         methods:{
 
         }
@@ -39,5 +39,7 @@
 </script>
 
 <style scoped>
-
+.el-header{
+    padding: 0;
+}
 </style>

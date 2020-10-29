@@ -171,7 +171,7 @@
                                 opacity: itemToStyle.opacity
                             }
                         },
-                        count:item.value,
+                        title:item.name,
                         path:item.path
                     })
                 }
@@ -227,8 +227,13 @@
                     this.chart = echarts.init(this.$refs.chart)
                     this.chart.setOption(option, true)
                     this.chart.on('click', function (params) {
-                        console.log(params)
-                        _this.$router.push({path: params.data.path})
+                        _this.$store.dispatch('setHeaderTitle', params.data.title)
+                        _this.$router.push({
+                            path: params.data.path,
+                            query:{
+                                title:params.data.title
+                            }
+                        })
                     });
                 })
             }

@@ -6,15 +6,23 @@
 
 <script>
     import echarts from 'echarts'
+
     export default {
         components: {},
         data() {
             return {
                 winH: (window.innerHeight - 150) + 'px',
-                chart:null,
+                chart: null,
+                listArr: [],
             }
         },
         created() {
+            this.listArr = []
+            this.$router.options.routes.filter((item) => {
+                if (item.meta.isInside) {
+                    this.listArr.push(item)
+                }
+            })
             this.init()
         },
         mounted() {
@@ -25,47 +33,44 @@
             })
         },
         methods: {
-            goTo() {
-                this.$router.push({path: '/typeScript/page1'})
-            },
             init() {
-                let _this=this
+                let _this = this
                 const plantCap = [
                     {
                         name: 'Vue',
                         value: 25,
-                        path:'/typeScript/index',
-                        id:1,
+                        path: '/typeScript/index',
+                        id: 1,
                     }, {
                         name: 'JavaScript',
                         value: 15,
-                        path:'/typeScript/index',
-                        id:2,
+                        path: '/javaScript/index',
+                        id: 2,
                     }, {
                         name: 'TypeScript',
                         value: 8,
-                        path:'/typeScript/index',
-                        id:3,
+                        path: '/typeScript/index',
+                        id: 3,
                     }, {
                         name: 'React',
                         value: 7,
-                        path:'/typeScript/index',
-                        id:4,
+                        path: '/react/index',
+                        id: 4,
                     }, {
                         name: '其他',
                         value: 15,
-                        path:'/typeScript/index',
-                        id:5,
-                    },{
+                        path: '/others/index',
+                        id: 5,
+                    }, {
                         name: '面试题',
                         value: 15,
-                        path:'/typeScript/index',
-                        id:6,
-                    },{
+                        path: '/interviews/index',
+                        id: 6,
+                    }, {
                         name: 'Test',
                         value: 15,
-                        path:'/typeScript/index',
-                        id:7,
+                        path: '/typeScript/index',
+                        id: 7,
                     }
                 ];
                 const datalist = [
@@ -149,13 +154,14 @@
                     }
                 ];
                 let datas = [];
-                for (var i = 0; i < plantCap.length; i++) {
-                    var item = plantCap[i];
-                    var itemToStyle = datalist[i];
+                for (var i = 0; i < this.listArr.length; i++) {
+                    const item = this.listArr[i];
+                    const itemToStyle = datalist[i];
+                    let count = _this.getCount(count = 0, item.children, 'children')
                     datas.push({
-                        name: item.name + '\n' + item.value,
+                        name: item.meta.title + '\n' + count,
                         value: itemToStyle.offset,
-                        symbolSize: item.value+90,
+                        symbolSize: (item.children.length + 100),
                         label: {
                             normal: {
                                 textStyle: {
@@ -171,8 +177,9 @@
                                 opacity: itemToStyle.opacity
                             }
                         },
-                        title:item.name,
-                        path:item.path
+                        title: item.meta.title,
+                        path: item.path,
+                        routes: item.children || []
                     })
                 }
                 let option = {
@@ -227,16 +234,33 @@
                     this.chart = echarts.init(this.$refs.chart)
                     this.chart.setOption(option, true)
                     this.chart.on('click', function (params) {
-                        _this.$store.dispatch('setHeaderTitle', params.data.title)
+                        window.localStorage.setItem('insidePageTitle', params.data.title)
+                        window.localStorage.setItem('sideBarRoutes', JSON.stringify(params.data.routes))
+                        // _this.$store.dispatch('setHeaderTitle', params.data.title)
                         _this.$router.push({
                             path: params.data.path,
-                            query:{
-                                title:params.data.title
-                            }
                         })
                     });
                 })
-            }
+            },
+            reversalTree(treeItems = [], data, children) {
+                data.forEach(item => {
+                    treeItems.push(item)
+                    if (item[children] && item[children].length !== 0) {
+                        this.reversalTree(treeItems, item[children], children)
+                    }
+                })
+                return ''
+            },
+            getCount(count = 0, data, children) {
+                data.forEach(item => {
+                    count++
+                    if (item[children] && item[children].length !== 0) {
+                        this.getCount(count, item[children], children)
+                    }
+                })
+                return count
+            },
         }
     }
 </script>

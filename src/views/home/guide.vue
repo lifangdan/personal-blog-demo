@@ -1,5 +1,5 @@
 <template>
-    <div class="bg">
+    <div class="bg" :style="{'height':winH}">
         <div class="main" @click="goTo">
             欢迎来到我的博客
             <i class="el-icon-right"></i>
@@ -9,6 +9,11 @@
 
 <script>
     export default {
+        data(){
+            return{
+                winH:window.innerHeight+'px'
+            }
+        },
         methods:{
             goTo(){
                 this.$router.push({path:'/Index'})
@@ -20,7 +25,6 @@
 <style scoped lang="scss">
     .bg {
         width: 100%;
-        height: 1000px;
         position: relative;
         background-image: url("../../assets/home_bg.jpg");
         background-repeat: no-repeat;

@@ -1,7 +1,7 @@
 <template>
     <div class="header border-bottom">
         <div class="title">
-            {{title}}
+            {{insidePageTitle}}
         </div>
     </div>
 </template>
@@ -16,12 +16,10 @@
         },
         data(){
             return{
-                title:this.$route.query.title
+                insidePageTitle:window.localStorage.getItem('insidePageTitle')||''
             }
         },
         created() {
-            console.log(1111111111111)
-            console.log(this.headerTitle)
         }
     }
 </script>

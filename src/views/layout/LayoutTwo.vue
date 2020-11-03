@@ -5,7 +5,7 @@
         </el-header>
         <el-container>
             <el-aside width="200px">
-                <SideBarMenu/>
+                <SideBarMenu :routesList="routesList"/>
             </el-aside>
             <el-main>
                 <Main/>
@@ -26,6 +26,7 @@
         },
         data(){
             return{
+                routesList:JSON.parse(window.localStorage.getItem('sideBarRoutes'))
             }
         },
         created(){

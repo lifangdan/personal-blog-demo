@@ -14,6 +14,7 @@
                 </el-menu-item>
             </el-menu>
         </div>
+        <div class="github" @click="goToGithub"><img src="../../../assets/github_03.png"></div>
     </div>
 </template>
 
@@ -71,7 +72,10 @@
             goTo(item) {
                 this.$emit('getData',item)
                 this.$router.push({path: item.path})
-            }
+            },
+            goToGithub(){
+                window.open('https://github.com/lifangdan')
+            },
         }
     }
 </script>
@@ -85,10 +89,20 @@
             color: #fff;
             font-size: 16px;
             font-weight: bold;
-            margin: 15px 50px 0 20px;
+            margin: 18px 60px 0 20px;
         }
         .header-center {
             /*margin: 0 auto;*/
+        }
+        .github{
+            width:25px;
+            position:absolute;
+            right:20px;
+            top:17px;
+            cursor:pointer;
+        }
+        .el-menu.el-menu--horizontal{
+            border-bottom: none;
         }
     }
 

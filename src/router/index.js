@@ -38,7 +38,7 @@ const routes = [
                 meta: {
                     isShowSideBar: false,//是否展示侧边栏菜单栏
                     isHeader: true,//是否头部菜单
-                    title: '我的工作台',
+                    title: '首页',
                 }
             },
         ]

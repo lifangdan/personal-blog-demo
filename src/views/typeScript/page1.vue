@@ -1,5 +1,7 @@
 <template>
-    <div>我是页面111</div>
+    <div>
+        <div style="height: 2000px;">我是页面1</div>
+    </div>
 </template>
 
 <script>

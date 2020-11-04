@@ -1,5 +1,6 @@
 <template>
     <div class="header-container">
+        <div class="logo">李芳丹的博客</div>
         <div class="header-center">
             <el-menu
                 :default-active="activeIndex"
@@ -13,7 +14,6 @@
                 </el-menu-item>
             </el-menu>
         </div>
-
     </div>
 </template>
 
@@ -80,10 +80,15 @@
     .header-container {
         width: 100%;
         background-color: #0784e5;
-
+        display: flex;
+        .logo{
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 15px 50px 0 20px;
+        }
         .header-center {
-            width: 70%;
-            margin: 0 auto;
+            /*margin: 0 auto;*/
         }
     }
 

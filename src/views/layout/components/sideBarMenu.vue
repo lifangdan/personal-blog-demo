@@ -1,6 +1,7 @@
 <template>
     <div>
         <el-menu
+            :style="{'min-height':winH}"
             :default-active="$route.path"
             class="el-menu-vertical-demo">
             <template v-for="(item,index) in routesList">
@@ -22,33 +23,34 @@
                                      :to="child.path"
                                      :key="child.path">
                             <el-menu-item class="child" :index="child.path">
-                                <span >{{child.meta.title}}</span>
+                                <span>{{child.meta.title}}</span>
                             </el-menu-item>
                         </router-link>
                         <template v-else>
                             <side-bar-menu :is-nest="true"
-                                          :routesList="[child]">
+                                           :routesList="[child]">
                             </side-bar-menu>
                         </template>
                     </template>
                 </el-submenu>
             </template>
 
-                <!--<el-menu-item v-for="(item,index) in routesList" :index="String(index+1)">-->
-                    <!--<router-link :to="item.path" :key="item.path">-->
-                        <!--<span>{{item.meta.title}}</span>-->
-                    <!--</router-link>-->
-                <!--</el-menu-item>-->
+            <!--<el-menu-item v-for="(item,index) in routesList" :index="String(index+1)">-->
+            <!--<router-link :to="item.path" :key="item.path">-->
+            <!--<span>{{item.meta.title}}</span>-->
+            <!--</router-link>-->
+            <!--</el-menu-item>-->
         </el-menu>
     </div>
 </template>
 
 <script>
     export default {
-        name:'sideBarMenu',
+        name: 'sideBarMenu',
         props: ['routesList'],
-        data(){
-            return{
+        data() {
+            return {
+                winH: (window.innerHeight - 48) + 'px'
             }
         },
         created() {
@@ -57,5 +59,7 @@
 </script>
 
 <style scoped>
-.child{font-size: 12px;}
+    .child {
+        font-size: 12px;
+    }
 </style>

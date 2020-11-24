@@ -1,5 +1,5 @@
 <template>
-    <div>我是JavaScript页面1</div>
+    <div>这是page1啦啦啦~</div>
 </template>
 
 <script>
